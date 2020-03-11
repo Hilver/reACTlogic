@@ -1,0 +1,1 @@
+![](./media/reACTlogic_logo.png)
