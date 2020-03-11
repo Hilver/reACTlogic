@@ -4,14 +4,14 @@ interface IRefEl {
 	current: HTMLElement
 }
 
-const useResolution = (refEl: IRefEl) => {
-	const [resolution, setResolution] = useState()
+const useRect = (refEl: IRefEl) => {
+	const [rect, setRect] = useState()
 	
 	useEffect(() => {
 		const element = refEl.current
-		const getResolution = () => {
+		const handleRect = () => {
 			const {width, height, top, bottom, right, left, x, y} = element.getBoundingClientRect()
-			setResolution({
+			setRect({
 				width,
 				height,
 				top,
@@ -22,12 +22,12 @@ const useResolution = (refEl: IRefEl) => {
 				y
 			})
 		}
-		window.addEventListener('resize', getResolution)
-		return () => window.removeEventListener('resize', getResolution)
+		handleRect()
+		window.addEventListener('resize', handleRect)
+		return () => window.removeEventListener('resize', handleRect)
 	},[])
 	
-	return {...resolution}
-
+	return {...rect}
 }
 
-export default useResolution
+export default useRect

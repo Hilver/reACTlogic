@@ -1,5 +1,5 @@
 import useSlider from './Slider/useSlider'
-import useResolution from './Resolution//useResolution'
+import useResolution from './Measurement/useRect'
 
 export default {
 	useSlider,

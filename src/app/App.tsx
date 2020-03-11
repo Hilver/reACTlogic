@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import useResolution from '../lib/Resolution/useResolution'
+import useResolution from '../lib/Measurement/useRect'
 
 const App = () => {
 	const divRef = useRef()
