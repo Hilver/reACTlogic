@@ -2,17 +2,15 @@ import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { render} from '@testing-library/react'
 
-import resolution from '../../../../src/lib'
+import { useRect } from '../../../../src/lib'
 import App from '../../../../src/app/App'
 
-const { useResolution } = resolution
-
-describe("useResolution should", () => {
+describe("useRect should", () => {
 	test("returns default values on mounted", () => {
 		const div = render(
 			<App/>
 		)
-		const { result } = renderHook(() => useResolution({current: div.container}))
+		const { result } = renderHook(() => useRect({current: div.container}))
 
 		expect(result.current).toMatchObject({
 			width: 0,
