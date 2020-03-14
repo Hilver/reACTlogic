@@ -1,7 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import slider from '../../../../src/lib/'
-
-const { useSlider } = slider
+import { useSlider } from '../../../../src/lib/'
 
 describe("useSlider should", () => {
 	test("returns a default values", () => {
