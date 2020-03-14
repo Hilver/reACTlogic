@@ -17,7 +17,6 @@ slider.index: number
 ```
 
 **useRect**
-
 ```
 const App = () => {
 	const divRef = useRef()
@@ -47,6 +46,34 @@ const App = () => {
 / @bottom: number
 / @right: number
 / @left: number
+/ @x: number
+/ @y: number
+//
+*/
+```
+
+**useScroll**
+```
+/*
+// 
+/ @element?: HTMLElement | Passing ref element, if none the default value is taken (window) 
+/ @throttleTime?: number | Throttle event in ms, if none the default value is taken (20)
+//
+*/
+
+const App = () => {
+	const divRef = useRef()
+	const { x, y } = useScroll({element: divRef, throttleTime: 50)
+
+	return (
+		<div ref={divRef}>
+			<div>Scroll Y is: {y}</div>		
+		</div>
+	)
+}
+
+/*
+// 
 / @x: number
 / @y: number
 //
