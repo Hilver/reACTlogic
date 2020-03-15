@@ -19,12 +19,23 @@ const useScroll = (data?: IData) => {
 	const target: HTMLElement | Window = element === undefined ? window : element.current
 	
 	useLayoutEffect(() => {
-		const handleState = throttle((e: React.UIEvent): void => setPosition({
-			y: e.currentTarget.scrollTop || window.scrollY,
-			x: e.currentTarget.scrollLeft || window.scrollX,
-			isTop: e.currentTarget.scrollTop === 0 || window.scrollY === 0,
-			isBottom: window.scrollY + window.innerHeight >= body.offsetHeight
-		}), throttleTime || 0)
+		const handleState = throttle((e: React.UIEvent): void => {
+			const eventTarget = e.currentTarget
+			const { 
+				scrollTop,
+				scrollLeft,
+				clientHeight,
+				scrollHeight
+			} = eventTarget
+			setPosition({
+				y: scrollTop || window.scrollY,
+				x: scrollLeft || window.scrollX,
+				isTop: scrollTop === 0 || window.scrollY === 0,
+				isBottom: eventTarget ? 
+					scrollTop + clientHeight >= scrollHeight :
+					window.scrollY + window.innerHeight >= body.offsetHeight
+			})
+		}, throttleTime || 0)
 	
 		const handleScrollPosition = (e: Event): void => handleState(e)
 		
