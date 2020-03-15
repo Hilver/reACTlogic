@@ -23,7 +23,7 @@ const useScroll = (data?: IData) => {
 			y: e.currentTarget.scrollTop || window.scrollY,
 			x: e.currentTarget.scrollLeft || window.scrollX,
 			isTop: e.currentTarget.scrollTop === 0 || window.scrollY === 0,
-			isBottom: window.scrollY + window.outerHeight >= body.offsetHeight
+			isBottom: window.scrollY + window.innerHeight >= body.offsetHeight
 		}), throttleTime || 0)
 	
 		const handleScrollPosition = (e: Event): void => handleState(e)
