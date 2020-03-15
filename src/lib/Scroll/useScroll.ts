@@ -7,18 +7,26 @@ interface IData {
 }
 
 const useScroll = (data?: IData) => {
-	const [position, setPosition] = useState({x: 0, y: 0})
+	const [position, setPosition] = useState({
+		x: 0, 
+		y: 0, 
+		isBottom: false,
+		isTop: true
+	})
 	const { element, throttleTime } = data || {}
+	const { body } = document
 
 	const target: HTMLElement | Window = element === undefined ? window : element.current
 	
 	useLayoutEffect(() => {
-		const s = throttle((e: React.UIEvent): void => setPosition({
+		const handleState = throttle((e: React.UIEvent): void => setPosition({
 			y: e.currentTarget.scrollTop || window.scrollY,
-			x: e.currentTarget.scrollLeft || window.scrollX
+			x: e.currentTarget.scrollLeft || window.scrollX,
+			isTop: e.currentTarget.scrollTop === 0 || window.scrollY === 0,
+			isBottom: window.scrollY + window.outerHeight >= body.offsetHeight
 		}), throttleTime || 0)
 	
-		const handleScrollPosition = (e: Event): void => s(e)
+		const handleScrollPosition = (e: Event): void => handleState(e)
 		
 		if(target) {
 			target.addEventListener('scroll', handleScrollPosition)
