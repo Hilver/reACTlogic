@@ -27,11 +27,12 @@ const useScroll = (data?: IData) => {
 				clientHeight,
 				scrollHeight
 			} = eventTarget
+
 			setPosition({
 				y: scrollTop || window.scrollY,
 				x: scrollLeft || window.scrollX,
-				isTop: scrollTop === 0 || window.scrollY === 0,
-				isBottom: eventTarget ? 
+				isTop: eventTarget.parentElement ? scrollTop === 0 : window.scrollY === 0,
+				isBottom: eventTarget.parentElement ? 
 					scrollTop + clientHeight >= scrollHeight :
 					window.scrollY + window.innerHeight >= body.offsetHeight
 			})
