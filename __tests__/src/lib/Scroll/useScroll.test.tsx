@@ -1,9 +1,20 @@
 import React from 'react'
+import TestRenderer from 'react-test-renderer';
 import { renderHook } from '@testing-library/react-hooks'
 import { render, fireEvent} from '@testing-library/react'
 
 import { useScroll } from '../../../../src/lib'
 import App from '../../../../src/app/App'
+
+interface IResult {
+	element?: {
+		current: HTMLElement
+	},
+	throttleTime?: number
+}
+
+const { act } = TestRenderer
+const r = (data?: IResult) => renderHook(() => useScroll(data))
 
 describe("useScroll should", () => {
 	test("returns default values on mounted", () => {
@@ -11,12 +22,12 @@ describe("useScroll should", () => {
 			<App/>
 		)
 
-		const { result } = renderHook(() => useScroll({
+		const { result } = r({
 			element: {
 				current: div.container
 			},
 			throttleTime: 300
-		}))
+		})
 
 		expect(result.current).toMatchObject({
 			x: 0,
@@ -26,10 +37,11 @@ describe("useScroll should", () => {
 		})
 	})
 	test("returns expected values if no element is passed in", () =>{
-		const { result } = renderHook(() => useScroll())
+		const { result } = r()
 
-		fireEvent.scroll(window, { target: { scrollY: 100 } })
-
+		act(() => {
+			fireEvent.scroll(window, { target: { scrollY: 100 } })
+		})
 
 		expect(result.current).toMatchObject({
 			x: 0,
@@ -38,26 +50,28 @@ describe("useScroll should", () => {
 			isTop: false
 		})
 	})
-	// test("return expected values of passed element", () => {
-	// 	const { getByTestId } = render(
-	// 		<App/>
-	// 	)
+	test("return expected values of passed element", () => {
+		// const { getByTestId } = render(
+		// 	<App/>
+		// )
 				
-	// 	const scrollDiv = getByTestId("scrollDiv")
+		// const scrollDiv = getByTestId("scrollDiv")
 
-	// 	const { result } = renderHook(() => useScroll({
-	// 		element: {
-	// 			current: scrollDiv
-	// 		}
-	// 	}))
+		// const { result } = r({
+		// 	element: {
+		// 		current: scrollDiv
+		// 	}
+		// })
 
-	// 	fireEvent.scroll(scrollDiv, { currentTarget: {scrollLeft: 0, scrollTop: 0}})
+		// act(() => {
+		// 	fireEvent.scroll(scrollDiv, { currentTarget: {scrollLeft: 0, scrollTop: 0}})
+		// }) 
 
-	// 	expect(result.current).toMatchObject({
-	// 		x: 0,
-	// 		y: 230,
-	// 		isBottom: false,
-	// 		isTop: false
-	// 	})
-	// })
+		// expect(result.current).toMatchObject({
+		// 	x: 0,
+		// 	y: 230,
+		// 	isBottom: false,
+		// 	isTop: false
+		// })
+	})
 })
