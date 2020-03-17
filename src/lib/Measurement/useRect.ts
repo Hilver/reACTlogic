@@ -4,11 +4,12 @@ interface IRefEl {
 	current: HTMLElement
 }
 
-const useRect = (refEl: IRefEl) => {
+const useRect = (refEl?: IRefEl) => {
 	const [rect, setRect] = useState()
+	const { body } = document
 	
 	useEffect(() => {
-		const element = refEl.current
+		const element = refEl !== undefined ? refEl.current : body
 		const handleRect = () => {
 			const {width, height, top, bottom, right, left, x, y} = element.getBoundingClientRect()
 			setRect({
