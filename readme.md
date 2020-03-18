@@ -58,24 +58,39 @@ const App = () => {
 // 
 / @element?: HTMLElement | Passing ref element, if none the default value is taken (window) 
 / @throttleTime?: number | Throttle event in ms, if none the default value is taken (20)
+/ @targetElement?: HTMLElement | Passing ref of element which should be targeted
 //
 */
 
 const App = () => {
 	const divRef = useRef()
-	const { x, y } = useScroll({element: divRef, throttleTime: 50)
+	const targetEl = useRef()
+	const { 
+		x, 
+		y,
+		isTop,
+		isBottom,
+		isTargetReached
+	} = useScroll({
+			element: divRef, 
+			throttleTime: 50,
+			targetElement: targetEl
+	})
 
 	return (
 		<div ref={divRef}>
-			<div>Scroll Y is: {y}</div>		
+			<div ref={divRef}>Scroll Y is: {y}</div>		
 		</div>
 	)
 }
 
 /*
 // 
-/ @x: number
-/ @y: number
+/ @x: number | Horizontal position of provided element
+/ @y: number | Vertical position of provided element
+/ @isTop: boolean | returns true if scroll position of provided element is at the top
+/ @isBottom: boolean | returns true if scroll position of provided element is at the bottom
+/ @isTargetReached: boolean | returns true if target element is reached
 //
 */
 ```
