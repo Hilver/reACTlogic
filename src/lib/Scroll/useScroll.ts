@@ -1,9 +1,11 @@
 import React, { useLayoutEffect, useState, RefObject } from 'react'
 import { throttle } from '../../utils/'
+import useRect from '../Measurement/useRect'
 
 interface IData {
 	element?: RefObject<HTMLElement>
-	throttleTime?: number
+	throttleTime?: number,
+	targetElement?: RefObject<HTMLElement>
 }
 
 const useScroll = (data?: IData) => {
@@ -11,10 +13,12 @@ const useScroll = (data?: IData) => {
 		x: 0, 
 		y: 0, 
 		isBottom: false,
-		isTop: true
+		isTop: true,
+		isTargetReached: false
 	})
-	const { element, throttleTime } = data || {}
+	const { element, throttleTime, targetElement } = data || {}
 	const { body } = document
+	const innerTargetElement = useRect(targetElement)
 
 	const target: HTMLElement | Window = element === undefined ? window : element.current
 	
@@ -34,7 +38,8 @@ const useScroll = (data?: IData) => {
 				isTop: eventTarget.parentElement ? scrollTop === 0 : window.scrollY === 0,
 				isBottom: eventTarget.parentElement ? 
 					scrollTop + clientHeight >= scrollHeight :
-					window.scrollY + window.innerHeight >= body.offsetHeight
+					window.scrollY + window.innerHeight >= body.offsetHeight,
+				isTargetReached: innerTargetElement.top - clientHeight < (scrollTop || window.scrollY)
 			})
 		}, throttleTime || 0)
 	
