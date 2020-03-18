@@ -1,6 +1,5 @@
 import React, {useState, useRef, useCallback } from 'react'
-import { useRect } from '../lib/'
-import { useScroll } from '../lib/'
+import { useRect, useScroll, useInput } from '../lib/'
 
 const App = () => {
 	const divRef = useRef()
@@ -13,12 +12,17 @@ const App = () => {
 		targetElement: targetToReach
 	})
 	const windowScrollPosition = useScroll()
-	console.log(windowScrollPosition)
+	const [inputValue, setInputValue] = useInput()
+
 	return (
 		<div ref={divRef} style={{height: "3500px"}}>
 			<div data-testid="scrollDiv" ref={scrollRef} style={{height: "500px", overflow: 'scroll'}}>
 				<div style={{height: "3500px"}}>
 					Width is: {width}
+					<br/>
+					<input data-testid='textInput' type='text' onChange={setInputValue}/>
+					<br />
+					Input value is: {inputValue}
 					<div ref={targetToReach} style={{position: "relative", top: "900px"}}>Target Element</div>
 				</div>
 			</div>
