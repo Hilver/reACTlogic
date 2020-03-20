@@ -22,7 +22,7 @@ const App = () => {
 					<br/>
 					<input data-testid='textInput' type='text' onChange={setInputValue}/>
 					<br />
-					Input value is: {inputValue}
+					Input value is: <span data-testid="textFromInput">dupa {inputValue}</span>
 					<div ref={targetToReach} style={{position: "relative", top: "900px"}}>Target Element</div>
 				</div>
 			</div>

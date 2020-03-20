@@ -94,3 +94,26 @@ const App = () => {
 //
 */
 ```
+
+**useInput**
+```
+const App () => {
+	const [value, setValue] = useInput()
+
+	return (
+		<div>
+			<input type="text" onChange={setValue}>
+			<br/>
+			Input value: {value}
+		</div>
+	)
+}
+
+/*
+// 
+/ @x: value | Value of given input
+/ @y: setValue | Function that handle input value
+//
+*/
+
+```
