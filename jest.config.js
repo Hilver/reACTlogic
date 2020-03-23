@@ -17,7 +17,6 @@ module.exports = {
 	  "@testing-library/react-hooks",
 	],
 	snapshotSerializers: ["enzyme-to-json/serializer"],
-	setupTestFrameworkScriptFile: "<rootDir>/src/setupEnzyme.ts",
 	// Test spec file resolution pattern
 	// Matches parent folder `__tests__` and filename
 	// should contain `test` or `spec`.
