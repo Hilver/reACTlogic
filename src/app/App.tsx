@@ -1,5 +1,32 @@
 import React, {useState, useRef, useCallback } from 'react'
-import { useRect, useScroll, useInput } from '../lib/'
+import { useRect, useScroll, useInput, useSearch } from '../lib/'
+
+const searchData = [
+	{
+		name: 'Big Wheenie',
+		artist: 'Eminem'
+	},
+	{
+		name: 'Lucky',
+		artist: 'Britney Spears'
+	},
+	{
+		name: 'Cambiodolore',
+		artist: 'Natalia Oreiro'
+	},
+	{
+		name: '12 groszy',
+		artist: 'Kazik'
+	},
+	{
+		name: 'Mama',
+		artist: 'Freddie Mercury'
+	},
+	{
+		name: 'Yellow submarine',
+		artist: 'The Beatles'
+	}
+]
 
 const App = () => {
 	const divRef = useRef()
@@ -13,6 +40,8 @@ const App = () => {
 	})
 	const windowScrollPosition = useScroll()
 	const [inputValue, setInputValue] = useInput()
+	const [selectValue, setSelectValue] = useInput()
+	const searchResult = useSearch({data: searchData, search: inputValue, type: selectValue})
 
 	return (
 		<div ref={divRef} style={{height: "3500px"}}>
@@ -21,8 +50,25 @@ const App = () => {
 					Width is: {width}
 					<br/>
 					<input data-testid='textInput' type='text' onChange={setInputValue}/>
+					<select onChange={setSelectValue}>
+						<option>name</option>
+						<option>artist</option>
+					</select>
 					<br />
-					Input value is: <span data-testid="textFromInput">dupa {inputValue}</span>
+					Input value is: <span data-testid="textFromInput">{inputValue}</span>
+					<br />					
+					<ul>
+					{searchResult.map((el, index) =>( 
+						<li key={index}>
+							Artist: {el.artist}
+							<br />
+							Name: {el.name}									
+						</li>))}
+					</ul>
+						
+				
+
+
 					<div ref={targetToReach} style={{position: "relative", top: "900px"}}>Target Element</div>
 				</div>
 			</div>

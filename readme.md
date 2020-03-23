@@ -111,9 +111,40 @@ const App () => {
 
 /*
 // 
-/ @x: value | Value of given input
-/ @y: setValue | Function that handle input value
+/ @x: string | Value of given input
+/ @y: function | Function that handle input value
 //
 */
 
+```
+
+**useSearch**
+/*
+// 
+/ @data: array | array of searching elements 
+/ @search: string | search input
+/ @type?: string | type of searching properties in object
+//
+*/
+
+```
+const App () => {
+	const searchData = ['test1', 'test2', 'test3']
+	const [search, setSearch] = useInput()
+	const [value] = useSearch({data: searchData, search})
+
+	return (
+		<div>
+			<input type="text" onChange={setSearch}>
+			<br/>
+			Input value: {value}
+		</div>
+	)
+}
+
+/*
+// 
+/ @value: array | Returns an array of result
+//
+*/
 ```

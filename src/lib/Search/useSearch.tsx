@@ -11,12 +11,14 @@ const useSearch = (collections: ICollections) => {
 	const [result, setResult] = useState(data)
 
 	useEffect(() => {
-		if(type) {
-			setResult(data.filter((el: any) => el[type].indexOf(search) !== -1))
-		} else {
-			setResult(data.filter(el => el.toString().indexOf(search.toString()) !== -1))
+		if(data.length) {
+			if(type) {
+				setResult(data.filter((el: any) => el[type].indexOf(search) !== -1))
+			} else if(typeof data[0] !== 'object') {
+				setResult(data.filter(el => el.toString().indexOf(search.toString()) !== -1))
+			}
 		}
-	}, [search])
+	}, [search, type])
 
 	return result
 }
