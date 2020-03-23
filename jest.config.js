@@ -14,9 +14,10 @@ module.exports = {
 	// extended assertions to Jest
 	setupFilesAfterEnv: [
 	  "@testing-library/jest-dom/extend-expect",
-	  "@testing-library/react-hooks"
+	  "@testing-library/react-hooks",
 	],
-  
+	snapshotSerializers: ["enzyme-to-json/serializer"],
+	setupTestFrameworkScriptFile: "<rootDir>/src/setupEnzyme.ts",
 	// Test spec file resolution pattern
 	// Matches parent folder `__tests__` and filename
 	// should contain `test` or `spec`.
