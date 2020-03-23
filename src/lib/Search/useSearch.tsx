@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 
-interface IData {
-	inputData: Array<string | number | object>,
+interface ICollections {
+	data: any[],
 	search: string | number,
-	type: string
+	type?: string
 }
 
-const useSearch = (data: IData) => {
-	const { inputData, search, type } = data
-	const [result, setResult] = useState(inputData)
+const useSearch = (collections: ICollections) => {
+	const { data, search, type } = collections
+	const [result, setResult] = useState(data)
 
 	useEffect(() => {
 		if(type) {
-			setResult(inputData.filter((el: any) => el[type].indexOf(search) !== 1))
+			setResult(data.filter((el: any) => el[type].indexOf(search) !== -1))
 		} else {
-			setResult(inputData.filter(el => el.toString().indexOf(search.toString()) !== -1))
+			setResult(data.filter(el => el.toString().indexOf(search.toString()) !== -1))
 		}
 	}, [search])
 
