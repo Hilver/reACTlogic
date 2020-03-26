@@ -1,121 +1,63 @@
-![](./media/reACTlogic_logo.png)
+<div style="text-align: center;">
+	<img src="./media/reACTlogic_logo.png" />
+</div>
 
-reACTLogic as name say is React logic library based on hooks. 
+reACTLogic is a library of React's components logic which is based on the modern and cool React approach - **hooks!**
+
+## Motivation
+
+Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app, I decided to write a core of basic logic which can be used by all React developers. This is a truly concept of **"create once, use everywhere"**!
 
 ## API
 
 **useSlider**
 ```
-const slider = useSlider(changeSpeed: number, indexLimit: number)
+const slider = useSlider(changeSpeed?: number(ms), indexLimit: number)
 
 slider.isPlaying: boolean
 slider.setPlaying: function: (boolean) => isPlaying
 slider.togglePlaying: function: () => !isPlaying
-slider.nextSlide = () => index + 1
-slider.prevSlide = () => index - 1
+slider.nextSlide: function: () => index + 1
+slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
 **useRect**
 ```
-const App = () => {
-	const divRef = useRef()
-	const {
-		width, 
-		height,
-		top,
-		bottom,
-		right,
-		left,
-		x,
-		y
-		} = useRect(divRef)
+const rect = useRect(divRef: ReactRefElement)
 
-	return (
-		<div ref={divRef}>
-			<div>Width is: {width}</div>		
-		</div>
-	)
-}
-
-/*
-// 
-/ @width: number
-/ @height: number
-/ @top: number
-/ @bottom: number
-/ @right: number
-/ @left: number
-/ @x: number
-/ @y: number
-//
-*/
+rect.width: number
+rect.height: number
+rec.top: number
+rect.bottom: number
+rect.right: number
+rect.left: number
+rect.x: number
+rect.y: number
 ```
 
 **useScroll**
 ```
-/*
-// 
-/ @element?: HTMLElement | Passing ref element, if none the default value is taken (window) 
-/ @throttleTime?: number | Throttle event in ms, if none the default value is taken (20)
-/ @targetElement?: HTMLElement | Passing ref of element which should be targeted
-//
-*/
+const scroll = useScroll({
+	element?: ReactRefElement, 
+	throttleTime?: number(ms),
+	targetElement?: ReactRefElement
+})
 
-const App = () => {
-	const divRef = useRef()
-	const targetEl = useRef()
-	const { 
-		x, 
-		y,
-		isTop,
-		isBottom,
-		isTargetReached
-	} = useScroll({
-			element: divRef, 
-			throttleTime: 50,
-			targetElement: targetEl
-	})
-
-	return (
-		<div ref={divRef}>
-			<div ref={divRef}>Scroll Y is: {y}</div>		
-		</div>
-	)
-}
-
-/*
-// 
-/ @x: number | Horizontal position of provided element
-/ @y: number | Vertical position of provided element
-/ @isTop: boolean | returns true if scroll position of provided element is at the top
-/ @isBottom: boolean | returns true if scroll position of provided element is at the bottom
-/ @isTargetReached: boolean | returns true if target element is reached
-//
-*/
+scroll.x: number
+scroll.y: number
+scroll.isTop: boolean
+scroll.isBottom: boolean
+scroll.isTargetReached: boolean
 ```
 
 **useInput**
 ```
-const App () => {
-	const [value, setValue] = useInput()
+const input = useInput()
 
-	return (
-		<div>
-			<input type="text" onChange={setValue}>
-			<br/>
-			Input value: {value}
-		</div>
-	)
+input[0]: string
+input[1]: function: e => setValue(e.target.value)
 }
-
-/*
-// 
-/ @x: string | Value of given input
-/ @y: function | Function that handle input value
-//
-*/
-
 ```
 
 **useSearch**
@@ -128,23 +70,10 @@ const App () => {
 */
 
 ```
-const App () => {
-	const searchData = ['test1', 'test2', 'test3']
-	const [search, setSearch] = useInput()
-	const [value] = useSearch({data: searchData, search})
+const search = useSearch({
+	data: array, 
+	search: string
+})
 
-	return (
-		<div>
-			<input type="text" onChange={setSearch}>
-			<br/>
-			Input value: {value}
-		</div>
-	)
-}
-
-/*
-// 
-/ @value: array | Returns an array of result
-//
-*/
+search.value: array
 ```
