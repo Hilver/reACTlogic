@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -23,7 +24,7 @@ module.exports = {
             {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                use: 'ts-loader'
+                use: ['ts-loader', 'eslint-loader']
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {

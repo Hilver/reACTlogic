@@ -3,12 +3,20 @@ import { throttle } from '../../utils/'
 import useRect from '../Measurement/useRect'
 
 interface IData {
-	element?: RefObject<HTMLElement>
-	throttleTime?: number,
-	targetElement?: RefObject<HTMLElement>
+	element?: RefObject<HTMLElement>;
+	throttleTime?: number;
+	targetElement?: RefObject<HTMLElement>;
 }
 
-const useScroll = (data?: IData) => {
+interface IResult {
+	x: number;
+	y: number;
+	isBottom: boolean;
+	isTop: boolean;
+	isTargetReached: boolean;
+}
+
+const useScroll = (data?: IData): IResult => {
 	const [position, setPosition] = useState({
 		x: 0, 
 		y: 0, 
@@ -49,7 +57,7 @@ const useScroll = (data?: IData) => {
 			target.addEventListener('scroll', handleScrollPosition)
 		}		
 		
-		return () => { 
+		return (): void => { 
 			if(target) {
 				target.removeEventListener('scroll', handleScrollPosition)
 			}

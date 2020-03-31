@@ -1,4 +1,5 @@
-import React, {useState, useRef, useCallback } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useRef, ReactElement } from 'react'
 import { useRect, useScroll, useInput, useSearch } from '../lib/'
 
 const searchData = [
@@ -28,7 +29,7 @@ const searchData = [
 	}
 ]
 
-const App = () => {
+const App = (): ReactElement => {
 	const divRef = useRef()
 	const scrollRef = useRef()
 	const targetToReach = useRef()
@@ -58,7 +59,7 @@ const App = () => {
 					Input value is: <span data-testid="textFromInput">{inputValue}</span>
 					<br />					
 					<ul>
-					{searchResult.map((el, index) =>( 
+					{searchResult.map((el: any, index) =>( 
 						<li key={index}>
 							Artist: {el.artist}
 							<br />

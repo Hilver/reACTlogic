@@ -6,15 +6,26 @@ import { render, fireEvent} from '@testing-library/react'
 import { useScroll } from '../../../../src/lib'
 import App from '../../../../src/app/App'
 
-interface IResult {
+interface IData {
 	element?: {
-		current: HTMLElement
-	},
-	throttleTime?: number
+		current: HTMLElement;
+	};
+	throttleTime?: number;
+}
+
+interface IResult {
+	result: {
+		current: {
+			x: number;
+			y: number;
+			isBottom: boolean;
+			isTop: boolean;
+		};
+	};
 }
 
 const { act } = TestRenderer
-const r = (data?: IResult) => renderHook(() => useScroll(data))
+const r = (data?: IData): IResult => renderHook(() => useScroll(data))
 
 describe("useScroll should", () => {
 	test("returns default values on mounted", () => {
