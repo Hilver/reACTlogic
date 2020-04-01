@@ -7,8 +7,8 @@ import App from '../../../../src/app/App'
 
 const r = renderHook(() => useInput())
 
-describe("useSlider should", () => {
-	test("returns a default values", () => {
+describe('useSlider should', () => {
+	test('returns a default values', () => {
 		const [value, setValue] = r.result.current
 
 		expect(value).toBe(null)
@@ -20,9 +20,9 @@ describe("useSlider should", () => {
 	// 	let textFromInput = getByTestId("textFromInput")
 	// 	let input = (getByTestId("textInput") as HTMLInputElement)
 	// 	input.value = "test123"
-		
+
 
 	// 	expect(textFromInput).toBe("test123")
-		
+
 	// })
 })

@@ -1,9 +1,13 @@
-import React, { useState, FormEvent } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 
-const useInput = () => {
+type S = (string | number)
+type E = ChangeEvent<HTMLInputElement | HTMLSelectElement>
+type F = (e: E) => void;
+
+const useInput = (): [S, F] => {
 	const [value, setValue] = useState(null)
 
-	const handleValue = (e: FormEvent<HTMLInputElement>)  => {
+	const handleValue = (e: E): void => {
 		setValue(e.currentTarget.value)
 	}
 

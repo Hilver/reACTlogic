@@ -1,5 +1,5 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer'
 import { renderHook } from '@testing-library/react-hooks'
 import { render, fireEvent} from '@testing-library/react'
 
@@ -13,7 +13,7 @@ interface IData {
 	throttleTime?: number;
 }
 
-interface IResult {
+interface IScrollResult {
 	result: {
 		current: {
 			x: number;
@@ -25,10 +25,10 @@ interface IResult {
 }
 
 const { act } = TestRenderer
-const r = (data?: IData): IResult => renderHook(() => useScroll(data))
+const r = (data?: IData): IScrollResult => renderHook(() => useScroll(data))
 
-describe("useScroll should", () => {
-	test("returns default values on mounted", () => {
+describe('useScroll should', () => {
+	test('returns default values on mounted', () => {
 		const div = render(
 			<App/>
 		)
@@ -47,7 +47,7 @@ describe("useScroll should", () => {
 			isTop: true
 		})
 	})
-	test("returns expected values if no element is passed in", () =>{
+	test('returns expected values if no element is passed in', () =>{
 		const { result } = r()
 
 		act(() => {
@@ -61,11 +61,11 @@ describe("useScroll should", () => {
 			isTop: false
 		})
 	})
-	test("return expected values of passed element", () => {
+	test('return expected values of passed element', () => {
 		// const { getByTestId } = render(
 		// 	<App/>
 		// )
-				
+
 		// const scrollDiv = getByTestId("scrollDiv")
 
 		// const { result } = r({
@@ -76,7 +76,7 @@ describe("useScroll should", () => {
 
 		// act(() => {
 		// 	fireEvent.scroll(scrollDiv, { currentTarget: {scrollLeft: 0, scrollTop: 0}})
-		// }) 
+		// })
 
 		// expect(result.current).toMatchObject({
 		// 	x: 0,

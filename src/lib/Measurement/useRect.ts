@@ -4,7 +4,7 @@ interface IRefEl {
 	current: HTMLElement;
 }
 
-interface IResult {
+interface IRectResult {
 	width: number;
 	height: number;
 	top: number;
@@ -15,7 +15,7 @@ interface IResult {
 	y: number;
 }
 
-const useRect = (refEl?: IRefEl): IResult => {
+const useRect = (refEl?: IRefEl): IRectResult => {
 	const [rect, setRect] = useState({
 		width: 0,
 		height: 0,
@@ -27,7 +27,7 @@ const useRect = (refEl?: IRefEl): IResult => {
 		y: 0
 	})
 	const { body } = document
-	
+
 	useEffect(() => {
 		const element = refEl !== undefined ? refEl.current : body
 		const handleRect = (): void => {
@@ -46,8 +46,9 @@ const useRect = (refEl?: IRefEl): IResult => {
 		handleRect()
 		window.addEventListener('resize', handleRect)
 		return (): void => window.removeEventListener('resize', handleRect)
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
-	
+
 	return {...rect}
 }
 

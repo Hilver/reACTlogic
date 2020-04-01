@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef } from 'react'
 
-interface IResult {
+interface ISliderResult {
 	isPlaying: boolean;
 	setPlaying: (isPlaying: boolean) => void;
 	togglePlaying: () => void;
@@ -9,7 +9,7 @@ interface IResult {
 	index: number;
 }
 
-const useSlider = (changeSpeed: number, indexLimit: number): IResult => {
+const useSlider = (changeSpeed: number, indexLimit: number): ISliderResult => {
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)
 
@@ -20,12 +20,12 @@ const useSlider = (changeSpeed: number, indexLimit: number): IResult => {
 	,[])
 
 	const togglePlaying = (): void => {
-		if(!isPlaying) {
+		if (!isPlaying) {
 			indexRef.current = setInterval(() => {
 				setIndex(index => (index + 1) % indexLimit)
 			}, changeSpeed)
 		} else {
-			clearInterval(indexRef.current) 
+			clearInterval(indexRef.current)
 		}
 		setPlaying(!isPlaying)
 	}

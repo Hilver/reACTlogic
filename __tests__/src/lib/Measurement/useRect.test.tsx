@@ -5,8 +5,8 @@ import { render} from '@testing-library/react'
 import { useRect } from '../../../../src/lib'
 import App from '../../../../src/app/App'
 
-describe("useRect should", () => {
-	test("returns default values on mounted", () => {
+describe('useRect should', () => {
+	test('returns default values on mounted', () => {
 		const div = render(
 			<App/>
 		)
