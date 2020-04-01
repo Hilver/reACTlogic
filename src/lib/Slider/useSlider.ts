@@ -9,7 +9,7 @@ interface ISliderResult {
 	index: number;
 }
 
-const useSlider = (changeSpeed: number, indexLimit: number): ISliderResult => {
+const useSlider = (indexLimit: number, changeSpeed: number): ISliderResult => {
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)
 
@@ -23,7 +23,7 @@ const useSlider = (changeSpeed: number, indexLimit: number): ISliderResult => {
 		if (!isPlaying) {
 			indexRef.current = setInterval(() => {
 				setIndex(index => (index + 1) % indexLimit)
-			}, changeSpeed)
+			}, changeSpeed || 2000)
 		} else {
 			clearInterval(indexRef.current)
 		}
