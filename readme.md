@@ -96,6 +96,8 @@ scroll.isTargetReached: boolean
 ```
 
 ### **useInput**
+
+#### **Usage**
 ```
 const input = useInput()
 
@@ -104,19 +106,27 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-### **useSearch**
-/*
-// 
-/ @data: array | array of searching elements 
-/ @search: string | search input
-/ @type?: string | type of searching properties in object
-//
-*/
+### **useSearch(data: Array<string | number | object>, search: string | number, type: keyof data)**
+
+#### data
+
+An `array` of data that will be filtered for a match.
+
+#### search
+
+A `string` or `number` to be searched for.
+
+#### type
+
+When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data object.
+
+#### **Usage**
 
 ```
 const search = useSearch({
 	data: array, 
-	search: string
+	search: string,
+	type: string
 })
 
 search.value: array
