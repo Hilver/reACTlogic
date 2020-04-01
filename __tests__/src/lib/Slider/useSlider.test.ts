@@ -1,15 +1,15 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useSlider } from '../../../../src/lib/'
 
-describe("useSlider should", () => {
-	test("returns a default values", () => {
+describe('useSlider should', () => {
+	test('returns a default values', () => {
 		const { result } = renderHook(() => useSlider(1000, 4))
 
 		expect(result.current.isPlaying).toBeFalsy()
 		expect(result.current.index).toEqual(0)
 	})
 
-	test("changed playing state", () => {
+	test('changed playing state', () => {
 		const { result } = renderHook(() => useSlider(1000, 4))
 
 		expect(result.current.isPlaying).toBeFalsy()
@@ -24,12 +24,12 @@ describe("useSlider should", () => {
 		expect(result.current.isPlaying).toBe(false)
 	})
 
-	test("increment and decrease index number", () => {
+	test('increment and decrease index number', () => {
 		const { result } = renderHook(() => useSlider(1000, 4))
 
 		expect(result.current.index).toEqual(0)
 		act(() => {
-			result.current.nextSlide() 
+			result.current.nextSlide()
 		})
 		expect(result.current.index).toEqual(1)
 		act(() => {
@@ -39,10 +39,10 @@ describe("useSlider should", () => {
 		expect(result.current.index).toEqual(3)
 	})
 
-	test("changed index upon a called time", async () => {
+	test('changed index upon a called time', async () => {
 		jest.useFakeTimers()
 		const { result } = renderHook(() => useSlider(1000, 4))
-		
+
 		act(() => {
 			result.current.togglePlaying()
 		})

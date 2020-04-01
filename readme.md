@@ -8,9 +8,29 @@ reACTLogic is a library of React's components logic which is based on the modern
 
 Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app, I decided to write a core of basic logic which can be used by all React developers. This is a truly concept of **"create once, use everywhere"**!
 
+## Install
+
+```
+npm install reactlogic
+```
+
 ## API
 
-**useSlider**
+### **useSlider(changeSpeed?: number, indexLimit: number)**
+
+#### changeSpeed
+
+Type: `number`
+
+A number of miliseconds between each slide change.
+
+#### indexLimit
+
+Type: `number`
+
+A number of slider length.
+
+#### **Usage**
 ```
 const slider = useSlider(changeSpeed?: number(ms), indexLimit: number)
 
@@ -22,7 +42,7 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-**useRect**
+### **useRect**
 ```
 const rect = useRect(divRef: ReactRefElement)
 
@@ -36,7 +56,7 @@ rect.x: number
 rect.y: number
 ```
 
-**useScroll**
+### **useScroll**
 ```
 const scroll = useScroll({
 	element?: ReactRefElement, 
@@ -51,7 +71,7 @@ scroll.isBottom: boolean
 scroll.isTargetReached: boolean
 ```
 
-**useInput**
+### **useInput**
 ```
 const input = useInput()
 
@@ -60,7 +80,7 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-**useSearch**
+### **useSearch**
 /*
 // 
 / @data: array | array of searching elements 
