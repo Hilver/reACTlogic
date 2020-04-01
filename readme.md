@@ -8,9 +8,29 @@ reACTLogic is a library of React's components logic which is based on the modern
 
 Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app, I decided to write a core of basic logic which can be used by all React developers. This is a truly concept of **"create once, use everywhere"**!
 
+## Install
+
+```
+npm install reactlogic
+```
+
 ## API
 
-**useSlider**
+### **useSlider(changeSpeed?, indexLimit)**
+
+#### changeSpeed
+
+Type: `number`
+
+A number of miliseconds between each slide change.
+
+#### indexLimit
+
+Type: `number`
+
+A number of slider length.
+
+#### **Usage**
 ```
 const slider = useSlider(changeSpeed?: number(ms), indexLimit: number)
 
@@ -22,7 +42,16 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-**useRect**
+### **useRect(refEl)**
+
+#### RefEl
+
+Type: `HTML Element`
+
+An tag element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. (More info here.)[https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect]
+
+#### **Usage**
+
 ```
 const rect = useRect(divRef: ReactRefElement)
 
@@ -36,7 +65,22 @@ rect.x: number
 rect.y: number
 ```
 
-**useScroll**
+### **useScroll({element, throttleTime, targetElement?})**
+
+#### element
+
+Type: `HTML Element`
+
+A React ref element of which scroll event will be measured.
+
+#### throttleTime
+
+Type: `number`
+
+A number of milliseconds of time between launches of each scroll event.
+
+#### **Usage**
+
 ```
 const scroll = useScroll({
 	element?: ReactRefElement, 
@@ -51,7 +95,9 @@ scroll.isBottom: boolean
 scroll.isTargetReached: boolean
 ```
 
-**useInput**
+### **useInput**
+
+#### **Usage**
 ```
 const input = useInput()
 
@@ -60,19 +106,33 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-**useSearch**
-/*
-// 
-/ @data: array | array of searching elements 
-/ @search: string | search input
-/ @type?: string | type of searching properties in object
-//
-*/
+### **useSearch({data, search, type?})**
+
+#### data
+
+Type: `Array<string | number | object>`
+
+An `array` of data that will be filtered for a match.
+
+#### search
+
+Type: `string | number`
+
+A `string` or `number` to be searched for.
+
+#### type
+
+Type: `string<keyof data>`
+
+When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data object.
+
+#### **Usage**
 
 ```
 const search = useSearch({
 	data: array, 
-	search: string
+	search: string,
+	type: string
 })
 
 search.value: array
