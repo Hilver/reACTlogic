@@ -16,19 +16,19 @@ npm install reactlogic
 
 ## API
 
-### **useSlider(changeSpeed?, indexLimit)**
-
-#### changeSpeed
-
-Type: `number`
-
-A number of miliseconds between each slide change.
+### **useSlider(indexLimit, changeSpeed?)**
 
 #### indexLimit
 
 Type: `number`
 
 A number of slider length.
+
+#### changeSpeed
+
+Type: `number`
+
+A number of miliseconds between each slide change. Default value is set to `2000ms`
 
 #### **Usage**
 ```
