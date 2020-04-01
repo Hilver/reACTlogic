@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react'
 
 interface IRefEl {
-	current: HTMLElement
+	current: HTMLElement;
 }
 
-const useRect = (refEl?: IRefEl) => {
+interface IRectResult {
+	width: number;
+	height: number;
+	top: number;
+	bottom: number;
+	right: number;
+	left: number;
+	x: number;
+	y: number;
+}
+
+const useRect = (refEl?: IRefEl): IRectResult => {
 	const [rect, setRect] = useState({
 		width: 0,
 		height: 0,
@@ -16,10 +27,10 @@ const useRect = (refEl?: IRefEl) => {
 		y: 0
 	})
 	const { body } = document
-	
+
 	useEffect(() => {
 		const element = refEl !== undefined ? refEl.current : body
-		const handleRect = () => {
+		const handleRect = (): void => {
 			const {width, height, top, bottom, right, left, x, y} = element.getBoundingClientRect()
 			setRect({
 				width,
@@ -34,9 +45,10 @@ const useRect = (refEl?: IRefEl) => {
 		}
 		handleRect()
 		window.addEventListener('resize', handleRect)
-		return () => window.removeEventListener('resize', handleRect)
+		return (): void => window.removeEventListener('resize', handleRect)
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
-	
+
 	return {...rect}
 }
 

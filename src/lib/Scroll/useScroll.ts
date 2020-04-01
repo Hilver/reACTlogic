@@ -3,15 +3,23 @@ import { throttle } from '../../utils/'
 import useRect from '../Measurement/useRect'
 
 interface IData {
-	element?: RefObject<HTMLElement>
-	throttleTime?: number,
-	targetElement?: RefObject<HTMLElement>
+	element?: RefObject<HTMLElement>;
+	throttleTime?: number;
+	targetElement?: RefObject<HTMLElement>;
 }
 
-const useScroll = (data?: IData) => {
+interface IScrollResult {
+	x: number;
+	y: number;
+	isBottom: boolean;
+	isTop: boolean;
+	isTargetReached: boolean;
+}
+
+const useScroll = (data?: IData): IScrollResult => {
 	const [position, setPosition] = useState({
-		x: 0, 
-		y: 0, 
+		x: 0,
+		y: 0,
 		isBottom: false,
 		isTop: true,
 		isTargetReached: false
@@ -21,11 +29,11 @@ const useScroll = (data?: IData) => {
 	const innerTargetElement = useRect(targetElement)
 
 	const target: HTMLElement | Window = element === undefined ? window : element.current
-	
+
 	useLayoutEffect(() => {
 		const handleState = throttle((e: React.UIEvent): void => {
 			const eventTarget = e.currentTarget
-			const { 
+			const {
 				scrollTop,
 				scrollLeft,
 				clientHeight,
@@ -36,24 +44,25 @@ const useScroll = (data?: IData) => {
 				y: scrollTop || window.scrollY,
 				x: scrollLeft || window.scrollX,
 				isTop: eventTarget.parentElement ? scrollTop === 0 : window.scrollY === 0,
-				isBottom: eventTarget.parentElement ? 
+				isBottom: eventTarget.parentElement ?
 					scrollTop + clientHeight >= scrollHeight :
 					window.scrollY + window.innerHeight >= body.offsetHeight,
 				isTargetReached: innerTargetElement.top - clientHeight < (scrollTop || window.scrollY)
 			})
 		}, throttleTime || 0)
-	
+
 		const handleScrollPosition = (e: Event): void => handleState(e)
-		
-		if(target) {
+
+		if (target) {
 			target.addEventListener('scroll', handleScrollPosition)
-		}		
-		
-		return () => { 
-			if(target) {
+		}
+
+		return (): void => {
+			if (target) {
 				target.removeEventListener('scroll', handleScrollPosition)
 			}
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[target])
 
 	return {...position}

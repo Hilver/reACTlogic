@@ -1,31 +1,40 @@
 import React, {useState, useEffect, useRef } from 'react'
 
-const useSlider = (changeSpeed: number, indexLimit: number) => {
+interface ISliderResult {
+	isPlaying: boolean;
+	setPlaying: (isPlaying: boolean) => void;
+	togglePlaying: () => void;
+	nextSlide: () => void;
+	prevSlide: () => void;
+	index: number;
+}
+
+const useSlider = (changeSpeed: number, indexLimit: number): ISliderResult => {
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)
 
 	const indexRef = useRef(null)
 
 	useEffect(() =>
-		() => clearInterval(indexRef.current)
+		(): void => clearInterval(indexRef.current)
 	,[])
 
-	const togglePlaying = () => {
-		if(!isPlaying) {
+	const togglePlaying = (): void => {
+		if (!isPlaying) {
 			indexRef.current = setInterval(() => {
 				setIndex(index => (index + 1) % indexLimit)
 			}, changeSpeed)
 		} else {
-			clearInterval(indexRef.current) 
+			clearInterval(indexRef.current)
 		}
 		setPlaying(!isPlaying)
 	}
 
-	const nextSlide = () => {
+	const nextSlide = (): void => {
 		setIndex(index => (index + 1) % indexLimit)
 	}
 
-	const prevSlide = () => {
+	const prevSlide = (): void => {
 		setIndex(index => index === 0 ? indexLimit - 1 : (index - 1) % indexLimit)
 	}
 
