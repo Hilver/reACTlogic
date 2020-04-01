@@ -42,7 +42,16 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-### **useRect**
+### **useRect(refEl: HTMLElement)**
+
+#### RefEl
+
+Type: `HTML Element`
+
+An element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. (More info here.)[https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect]
+
+#### **Usage**
+
 ```
 const rect = useRect(divRef: ReactRefElement)
 
