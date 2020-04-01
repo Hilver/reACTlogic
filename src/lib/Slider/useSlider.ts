@@ -9,7 +9,7 @@ interface ISliderResult {
 	index: number;
 }
 
-const useSlider = (changeSpeed: number, indexLimit: number): ISliderResult => {
+const useSlider = (indexLimit: number, changeSpeed = 2000): ISliderResult => {
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)
 

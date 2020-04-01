@@ -3,14 +3,14 @@ import { useSlider } from '../../../../src/lib/'
 
 describe('useSlider should', () => {
 	test('returns a default values', () => {
-		const { result } = renderHook(() => useSlider(1000, 4))
+		const { result } = renderHook(() => useSlider(4, 1000))
 
 		expect(result.current.isPlaying).toBeFalsy()
 		expect(result.current.index).toEqual(0)
 	})
 
 	test('changed playing state', () => {
-		const { result } = renderHook(() => useSlider(1000, 4))
+		const { result } = renderHook(() => useSlider(4, 1000))
 
 		expect(result.current.isPlaying).toBeFalsy()
 		act(() => {
@@ -25,7 +25,7 @@ describe('useSlider should', () => {
 	})
 
 	test('increment and decrease index number', () => {
-		const { result } = renderHook(() => useSlider(1000, 4))
+		const { result } = renderHook(() => useSlider(4, 1000))
 
 		expect(result.current.index).toEqual(0)
 		act(() => {
@@ -41,7 +41,7 @@ describe('useSlider should', () => {
 
 	test('changed index upon a called time', async () => {
 		jest.useFakeTimers()
-		const { result } = renderHook(() => useSlider(1000, 4))
+		const { result } = renderHook(() => useSlider(4, 1000))
 
 		act(() => {
 			result.current.togglePlaying()
@@ -64,5 +64,21 @@ describe('useSlider should', () => {
 			jest.advanceTimersByTime(2000)
 		})
 		expect(result.current.index).toBe(1)
+	})
+
+	test('change slides after 2000ms if no changeSpeed set', () => {
+		jest.useFakeTimers()
+		const { result } = renderHook(() => useSlider(4))
+
+		expect(result.current.index).toEqual(0)
+		act(() => {
+			result.current.togglePlaying()
+			jest.advanceTimersByTime(1000)
+		})
+		expect(result.current.index).toEqual(0)
+		act(() => {
+			jest.advanceTimersByTime(1000)
+		})
+		expect(result.current.index).toEqual(1)
 	})
 })
