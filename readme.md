@@ -16,7 +16,7 @@ npm install reactlogic
 
 ## API
 
-### **useSlider(changeSpeed?: number, indexLimit: number)**
+### **useSlider(changeSpeed?, indexLimit)**
 
 #### changeSpeed
 
@@ -42,7 +42,7 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-### **useRect(refEl: HTMLElement)**
+### **useRect(refEl)**
 
 #### RefEl
 
@@ -65,7 +65,7 @@ rect.x: number
 rect.y: number
 ```
 
-### **useScroll(element: RefObject, throttleTime: number, targetElement?: RefObject)**
+### **useScroll({element, throttleTime, targetElement?})**
 
 #### element
 
@@ -106,17 +106,23 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-### **useSearch(data: Array<string | number | object>, search: string | number, type: keyof data)**
+### **useSearch({data, search, type?})**
 
 #### data
+
+Type: `Array<string | number | object>`
 
 An `array` of data that will be filtered for a match.
 
 #### search
 
+Type: `string | number`
+
 A `string` or `number` to be searched for.
 
 #### type
+
+Type: `string<keyof data>`
 
 When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data object.
 
