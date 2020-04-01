@@ -48,7 +48,7 @@ slider.index: number
 
 Type: `HTML Element`
 
-An element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. (More info here.)[https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect]
+An tag element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. (More info here.)[https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect]
 
 #### **Usage**
 
@@ -65,7 +65,22 @@ rect.x: number
 rect.y: number
 ```
 
-### **useScroll**
+### **useScroll(element: RefObject, throttleTime: number, targetElement?: RefObject)**
+
+#### element
+
+Type: `HTML Element`
+
+A React ref element of which scroll event will be measured.
+
+#### throttleTime
+
+Type: `number`
+
+A number of milliseconds of time between launches of each scroll event.
+
+#### **Usage**
+
 ```
 const scroll = useScroll({
 	element?: ReactRefElement, 
