@@ -16,7 +16,16 @@ interface IScrollResult {
 	isTargetReached: boolean;
 }
 
+const scrollableTags = ['DIV', 'TABLE', 'TD']
+
 const useScroll = (data?: IData): IScrollResult => {
+	if (data !== undefined) {
+		if (data.element.current !== undefined) {
+			if (scrollableTags.every(el => el !== data.element.current.nodeName)) {
+				throw new Error('Scrolled element should be a div, table or td!')
+			}
+		}
+	}
 	const [position, setPosition] = useState({
 		x: 0,
 		y: 0,

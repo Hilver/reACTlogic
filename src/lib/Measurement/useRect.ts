@@ -15,14 +15,7 @@ interface IRectResult {
 	y: number;
 }
 
-const scrollableTags = ['div', 'table', 'td']
-
 const useRect = (refEl?: IRefEl): IRectResult => {
-	if ( refEl !== undefined) {
-		if (scrollableTags.every(el => el !== refEl.current.nodeName)) {
-			throw Error('Element which can be scrolled should be a div, table or td!')
-		}
-	}
 	const [rect, setRect] = useState({
 		width: 0,
 		height: 0,
