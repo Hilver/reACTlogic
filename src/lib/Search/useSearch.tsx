@@ -21,7 +21,7 @@ const toStr = (value: number | string,
 
 const useSearch = (collections: ICollections): (string | number | inputData)[] => {
 	const { data, search, type } = collections
-	const caseSensitive = collections.caseSensitive || true
+	const caseSensitive = collections.caseSensitive === undefined ? true : collections.caseSensitive
 	const [result, setResult] = useState(data)
 
 	if (data.some(val => typeof val === 'object')) {
@@ -40,7 +40,7 @@ const useSearch = (collections: ICollections): (string | number | inputData)[] =
 				setResult(data.filter((el: string | number) => toStr(el, caseSensitive).indexOf(toStr(search, caseSensitive)) !== -1))
 			}
 		}
-	}, [search, type, data])
+	}, [search, type, data, caseSensitive])
 
 	return result
 }

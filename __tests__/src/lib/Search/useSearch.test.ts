@@ -84,4 +84,18 @@ describe('useSearch should', () => {
 
 		expect(result.error).toEqual(Error('Invalid \'type\' property. Type should match at least one of searched object key!'))
 	})
+	test('returns given queries by caseSensitive', () => {
+		const data = ['TEST', 'test', 'tEEsTT2323', 'Test']
+
+		const [
+			query1,
+			query2
+		] = [
+			renderHook(() => useSearch({data, search: 'T'})),
+			renderHook(() => useSearch({data, search: 'T', caseSensitive: false}))
+		]
+
+		expect(query1.result.current).toEqual(['TEST', 'tEEsTT2323', 'Test'])
+		expect(query2.result.current).toEqual(['TEST', 'test', 'tEEsTT2323', 'Test'])
+	})
 })
