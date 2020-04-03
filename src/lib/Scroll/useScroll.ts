@@ -27,6 +27,7 @@ const useScroll = (data?: IData): IScrollResult => {
 		}
 		if (data.throttleTime !== undefined) {
 			if (typeof data.throttleTime !== 'number') throw new Error('ThrottleTime should be a number!')
+			if (data.throttleTime < 0) throw new Error('ThrottleTime should be greater than zero!')
 		}
 		if (data.targetElement !== undefined) {
 			if (data.targetElement.current !== undefined) {

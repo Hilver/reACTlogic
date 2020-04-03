@@ -68,6 +68,31 @@ describe('useScroll should', () => {
 
 		expect(result.error).toEqual(Error('Scrolled element should be a div, table or td!'))
 	})
+	test('to not throw an error if element is a div, table or td', () => {
+		const div = document.createElement('div')
+		const table = document.createElement('table')
+		const td = document.createElement('td')
+
+		const [caseDiv, caseTable, caseTd] = [
+			renderHook(() => useScroll({element: {current: div}})),
+			renderHook(() => useScroll({element: {current: table}})),
+			renderHook(() => useScroll({element: {current: td}}))
+		]
+
+		expect(caseDiv.result.error).toBeUndefined()
+		expect(caseDiv.result).toBeDefined()
+		expect(caseTable.result.error).toBeUndefined()
+		expect(caseTable.result).toBeDefined()
+		expect(caseTd.result.error).toBeUndefined()
+		expect(caseTd.result).toBeDefined()
+	})
+	test('throw an error if throttleTime is less than zero', () => {
+		const div = document.createElement('div')
+
+		const { result } = renderHook(() => useScroll({element: {current: div}, throttleTime: -25}))
+
+		expect(result.error).toEqual(Error('ThrottleTime should be greater than zero!'))
+	})
 	test('return expected values of passed element', () => {
 		// const { getByTestId } = render(
 		// 	<App/>
