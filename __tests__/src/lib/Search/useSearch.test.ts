@@ -58,6 +58,30 @@ describe('useSearch should', () => {
 
 		expect(result.current).toEqual([])
 	})
+	test('throws an error if input data is mixed with objects and primitive types', () => {
+		const mixedArr1 = [{test: 'test1', id: 0}, 'test', {test: 'test2', id: 1}]
+		const mixedArr2 = [43, {test: 'test1', id: 0}, 'test']
 
+		const [result1, result2] = [
+			renderHook(() => useSearch({data: mixedArr1, search: 't', type: 'test'})),
+			renderHook(() => useSearch({data: mixedArr2, search: 't', type: 'test'}))
+		]
 
+		expect(result1.result.error).toEqual(Error('Don\'t mix data object with others types!'))
+		expect(result2.result.error).toEqual(Error('Don\'t mix data object with others types!'))
+	})
+	test('throws an error if input data is an object and type is missing', () => {
+		const data = [{test: 'test1', id: 0}, {test: 'test2', id: 1}, {test: 'test3', id: 2}]
+
+		const { result } = renderHook(() => useSearch({data, search: '' }))
+
+		expect(result.error).toEqual(Error('Missing \'type\' option!'))
+	})
+	test('throws an error if type is not a key in searched object', () => {
+		const data = [{test: 'test1', id: 0}, {test: 'test2', id: 1}, {test: 'test3', id: 2}]
+
+		const { result } = renderHook(() => useSearch({data, search: '', type: 'zulugula' }))
+
+		expect(result.error).toEqual(Error('Invalid \'type\' property. Type should match at least one of searched object key!'))
+	})
 })
