@@ -11,12 +11,17 @@ interface ICollections {
 	data: Array<string | number | inputData>;
 	search: string | number;
 	type?: keyof inputData;
+	caseSensitive?: boolean;
 }
 
-const toStr = (value: number | string): string => value.toString()
+const toStr = (value: number | string,
+	caseSensitive: boolean): string => caseSensitive ?
+	value.toString() :
+	value.toString().toLowerCase()
 
 const useSearch = (collections: ICollections): (string | number | inputData)[] => {
 	const { data, search, type } = collections
+	const caseSensitive = collections.caseSensitive === undefined ? true : collections.caseSensitive
 	const [result, setResult] = useState(data)
 
 	if (data.some(val => typeof val === 'object')) {
@@ -30,12 +35,12 @@ const useSearch = (collections: ICollections): (string | number | inputData)[] =
 	useEffect(() => {
 		if (data.length) {
 			if (type) {
-				setResult(data.filter((el: inputData) => toStr(el[type]).indexOf(toStr(search)) !== -1))
+				setResult(data.filter((el: inputData) => toStr(el[type], caseSensitive).indexOf(toStr(search, caseSensitive)) !== -1))
 			} else if (typeof data[0] !== 'object') {
-				setResult(data.filter((el: string | number) => toStr(el).indexOf(toStr(search)) !== -1))
+				setResult(data.filter((el: string | number) => toStr(el, caseSensitive).indexOf(toStr(search, caseSensitive)) !== -1))
 			}
 		}
-	}, [search, type, data])
+	}, [search, type, data, caseSensitive])
 
 	return result
 }
