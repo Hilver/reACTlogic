@@ -16,7 +16,25 @@ interface IScrollResult {
 	isTargetReached: boolean;
 }
 
+const scrollableTags = ['DIV', 'TABLE', 'TD']
+
 const useScroll = (data?: IData): IScrollResult => {
+	if (data !== undefined) {
+		if (data.element.current !== undefined) {
+			if (scrollableTags.every(el => el !== data.element.current.nodeName)) {
+				throw new Error('Scrolled element should be a div, table or td!')
+			}
+		}
+		if (data.throttleTime !== undefined) {
+			if (typeof data.throttleTime !== 'number') throw new Error('ThrottleTime should be a number!')
+			if (data.throttleTime < 0) throw new Error('ThrottleTime should be greater than zero!')
+		}
+		if (data.targetElement !== undefined) {
+			if (data.targetElement.current !== undefined) {
+				if (data.targetElement.current.tagName === undefined) throw new Error('Target should be an HTML element!')
+			}
+		}
+	}
 	const [position, setPosition] = useState({
 		x: 0,
 		y: 0,

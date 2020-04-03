@@ -81,4 +81,19 @@ describe('useSlider should', () => {
 		})
 		expect(result.current.index).toEqual(1)
 	})
+	test('throws an error if indexLimit is undefined or null', () => {
+		const { result } = renderHook(() => useSlider(null))
+
+		expect(result.error).toEqual(Error('Index Limit is required!'))
+	})
+	test('throws an error if indexLimit is zero or less', () => {
+		const { result } = renderHook(() => useSlider(-2))
+
+		expect(result.error).toEqual(Error('Index Limit should be a number greater than zero!'))
+	})
+	test('throws an error if change speed is less than zero', () => {
+		const { result } = renderHook(() => useSlider(2, -2000))
+
+		expect(result.error).toEqual(Error('ChangeSpeed should be greater than zero!'))
+	})
 })

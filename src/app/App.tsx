@@ -42,7 +42,7 @@ const App = (): ReactElement => {
 	const windowScrollPosition = useScroll()
 	const [inputValue, setInputValue] = useInput()
 	const [selectValue, setSelectValue] = useInput()
-	const searchResult = useSearch({data: searchData, search: inputValue, type: selectValue})
+	const searchResult = useSearch({data: searchData, search: inputValue || '', type: selectValue || 'name'})
 
 	return (
 		<div ref={divRef} style={{height: '3500px'}}>

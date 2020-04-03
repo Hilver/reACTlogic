@@ -10,6 +10,9 @@ interface ISliderResult {
 }
 
 const useSlider = (indexLimit: number, changeSpeed = 2000): ISliderResult => {
+	if (indexLimit === undefined || indexLimit === null) throw new Error('Index Limit is required!')
+	if (typeof indexLimit !== 'number' || indexLimit < 1) throw new Error('Index Limit should be a number greater than zero!')
+	if (changeSpeed < 0) throw new Error('ChangeSpeed should be greater than zero!')
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)
 
