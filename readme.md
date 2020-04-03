@@ -106,7 +106,7 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-### **useSearch({data, search, type?})**
+### **useSearch({data, search, type?, caseSensitive?})**
 
 #### data
 
@@ -124,7 +124,13 @@ A `string` or `number` to be searched for.
 
 Type: `string<keyof data>`
 
-When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data object.
+When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data objects.
+
+#### caseSensitive
+
+Type: `boolean`
+
+An addition property which distinguish queries by case sensitive. Default value is set to **true**.
 
 #### **Usage**
 
