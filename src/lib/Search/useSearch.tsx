@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import errorValidator from '../../utils/error-validator'
 
 type inputData = {
     [key: string]: string | number;
@@ -19,11 +20,11 @@ const useSearch = (collections: ICollections): (string | number | inputData)[] =
 	const [result, setResult] = useState(data)
 
 	if (data.some(val => typeof val === 'object')) {
-		if (!(data.every(val => typeof val === 'object'))) throw new Error('Don\'t mix data object with others types!')
-		if (type === undefined) throw new Error('Missing \'type\' option!')
-		if (!(data.some(obj => Object.keys(obj).filter(key => key === type).length > 0))) {
-			throw new Error('Invalid \'type\' property. Type should match at least one of searched object key!')
-		}
+		errorValidator(
+			[!(data.every(val => typeof val === 'object')), 'Don\'t mix data object with others types!'],
+			[type === undefined, 'Missing \'type\' option!'],
+			[!(data.some(obj => Object.keys(obj).filter(key => key === type).length > 0)), 'Invalid \'type\' property. Type should match at least one of searched object key!']
+		)
 	}
 
 	useEffect(() => {
