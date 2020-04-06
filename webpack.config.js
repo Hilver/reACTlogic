@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path'),
-	HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
 	mode: 'production',
 	entry: {
-		app: ['./src/index.tsx'],
+		app: ['./src/lib/index.ts'],
 		vendor: ['react', 'react-dom']
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'js/[name].bundle.js'
+		filename: '[name].bundle.js'
 	},
 	// Enable sourcemaps for debugging webpack's output.
 	devtool: 'source-map',
@@ -34,7 +33,4 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new HtmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
-	],
 }
