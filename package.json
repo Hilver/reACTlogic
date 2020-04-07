@@ -2,7 +2,10 @@
   "name": "reactlogic-hooks-library",
   "version": "1.0.0",
   "description": "A React hooks based components logic library",
-  "main": "./dist/index.js",
+  "main": "./dist/index.bundle.js",
+  "files": [
+    "./src/lib"
+  ],
   "scripts": {
     "build": "webpack --mode production",
     "test": "jest",
@@ -15,10 +18,10 @@
     "url": "git+https://github.com/Hilver/React-Webpack-TypeScript-Basic-Config.git"
   },
   "keywords": [
-    "config",
+    "hooks",
     "react",
-    "webpack",
-    "typescript"
+    "library",
+    "reactlogic"
   ],
   "author": "Pawel Peczkowski",
   "license": "MIT",
@@ -26,6 +29,10 @@
     "url": "https://github.com/Hilver/React-Webpack-TypeScript-Basic-Config/issues"
   },
   "homepage": "https://github.com/Hilver/React-Webpack-TypeScript-Basic-Config#readme",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
     "@types/enzyme": "^3.10.5",

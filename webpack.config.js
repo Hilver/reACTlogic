@@ -4,12 +4,13 @@ const path = require('path')
 module.exports = {
 	mode: 'production',
 	entry: {
-		app: ['./src/lib/index.ts'],
+		index: ['./src/lib/index.ts'],
 		vendor: ['react', 'react-dom']
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js'
+		filename: 'index.bundle.js',
+		libraryTarget: 'commonjs2'
 	},
 	// Enable sourcemaps for debugging webpack's output.
 	devtool: 'source-map',
@@ -33,4 +34,7 @@ module.exports = {
 			}
 		]
 	},
+	externals: {
+		'react': 'commonjs react'
+	}
 }
