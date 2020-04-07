@@ -16,7 +16,7 @@ const testingContainer = getByTestId(container, 'test')
 
 describe('useRect should', () => {
 	beforeAll(() => {
-		Object.defineProperty(testingContainer, 'getBoundClientRect', { configurable: true, value: () => ({width: 600, height: 300, top: 0, bottom: 0, x: 0, y: 0}) })
+		Object.defineProperty(testingContainer, 'getBoundClientRect', { configurable: true, value: () => ({width: 600, height: 300, top: 0, bottom: 0}) })
 	})
 	test('returns default values on mounted', () => {
 		const { result } = renderHook(() => useRect({current: testingContainer}))
@@ -27,9 +27,7 @@ describe('useRect should', () => {
 			top: 0,
 			bottom: 0,
 			right: 0,
-			left: 0,
-			x: undefined,
-			y: undefined
+			left: 0
 		})
 	})
 	// ** Playing with jsdom **
