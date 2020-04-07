@@ -11,8 +11,6 @@ interface IRectResult {
 	bottom: number;
 	right: number;
 	left: number;
-	x: number;
-	y: number;
 }
 
 const useRect = (refEl?: IRefEl): IRectResult => {
@@ -22,25 +20,21 @@ const useRect = (refEl?: IRefEl): IRectResult => {
 		top: 0,
 		bottom: 0,
 		right: 0,
-		left: 0,
-		x: 0,
-		y: 0
+		left: 0
 	})
 	const { body } = document
 
 	useEffect(() => {
 		const element = refEl !== undefined ? refEl.current : body
 		const handleRect = (): void => {
-			const {width, height, top, bottom, right, left, x, y} = element.getBoundingClientRect()
+			const {width, height, top, bottom, right, left} = element.getBoundingClientRect()
 			setRect({
 				width,
 				height,
 				top,
 				bottom,
 				right,
-				left,
-				x,
-				y
+				left
 			})
 		}
 		handleRect()

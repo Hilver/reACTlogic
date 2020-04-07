@@ -61,8 +61,6 @@ rec.top: number
 rect.bottom: number
 rect.right: number
 rect.left: number
-rect.x: number
-rect.y: number
 ```
 
 ### **useScroll({element, throttleTime, targetElement?})**
