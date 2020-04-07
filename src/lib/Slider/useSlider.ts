@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef } from 'react'
 
 import errorValidator from '../../utils/error-validator'
 
-interface ISliderResult {
+export interface ISliderResult {
 	isPlaying: boolean;
 	setPlaying: (isPlaying: boolean) => void;
 	togglePlaying: () => void;
