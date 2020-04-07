@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-interface IRefEl {
+export interface IRefEl {
 	current: HTMLElement;
 }
 
-interface IRectResult {
+export interface IRectResult {
 	width: number;
 	height: number;
 	top: number;

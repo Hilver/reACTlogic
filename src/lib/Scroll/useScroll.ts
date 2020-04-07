@@ -4,13 +4,13 @@ import useRect from '../Measurement/useRect'
 
 import errorValidator from '../../utils/error-validator'
 
-interface IData {
+export interface IData {
 	element?: RefObject<HTMLElement>;
 	throttleTime?: number;
 	targetElement?: RefObject<HTMLElement>;
 }
 
-interface IScrollResult {
+export interface IScrollResult {
 	x: number;
 	y: number;
 	isBottom: boolean;

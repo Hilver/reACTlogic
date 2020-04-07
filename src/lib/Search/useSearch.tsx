@@ -7,7 +7,7 @@ type inputData = {
 }
 
 
-interface ICollections {
+export interface ICollections {
 	data: Array<string | number | inputData>;
 	search: string | number;
 	type?: keyof inputData;
