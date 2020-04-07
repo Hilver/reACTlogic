@@ -44,7 +44,7 @@ const useScroll = (data?: IData): IScrollResult => {
 		isTop: true,
 		isTargetReached: false
 	})
-	const { element, throttleTime, targetElement } = data || {}
+	const { element, throttleTime, targetElement }: IData = data || {}
 	const { body } = document
 	const innerTargetElement = useRect(targetElement)
 
