@@ -5,9 +5,12 @@
         "declaration": true,
         "noImplicitAny": true,
         "esModuleInterop": true,
-        "module": "commonjs",
+        "module": "commonjs",        
         "target": "es5",
         "lib": ["es5", "ES2015.Promise", "DOM"],
-        "jsx": "react"
+        "jsx": "react",
+        "moduleResolution": "node"
     },
+    "include": ["src"],
+    "exclude": ["node_modules"]
 }
