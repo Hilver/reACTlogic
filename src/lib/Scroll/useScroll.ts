@@ -23,12 +23,12 @@ const scrollableTags = ['DIV', 'TABLE', 'TD']
 const useScroll = (data?: IData): IScrollResult => {
 	if (data !== undefined) {
 		if (data.element.current !== undefined) {
-			errorValidator([scrollableTags.every(el => el !== data.element.current.nodeName), 'Scrolled element should be a div, table or td!'])
+			errorValidator([scrollableTags.every(el => el !== data.element.current.nodeName), 'Scrolled element should be a div, table or td!', 'typeError'])
 		}
 		if (data.throttleTime !== undefined) {
 			errorValidator(
-				[typeof data.throttleTime !== 'number', 'ThrottleTime should be a number!'],
-				[data.throttleTime < 0, 'ThrottleTime should be greater than zero!']
+				[typeof data.throttleTime !== 'number', 'ThrottleTime should be a number!', 'typeError'],
+				[data.throttleTime < 0, 'ThrottleTime should be greater than zero!', 'rangeError']
 			)
 		}
 		if (data.targetElement !== undefined) {

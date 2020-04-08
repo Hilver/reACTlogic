@@ -13,9 +13,9 @@ export interface ISliderResult {
 
 const useSlider = (indexLimit: number, changeSpeed = 2000): ISliderResult => {
 	errorValidator(
-		[indexLimit === undefined || indexLimit === null, 'Index Limit is required!'],
-		[typeof indexLimit !== 'number' || indexLimit < 1, 'Index Limit should be a number greater than zero!'],
-		[changeSpeed < 0, 'ChangeSpeed should be greater than zero!']
+		[indexLimit === undefined || indexLimit === null, 'Index Limit is required!', 'referenceError'],
+		[typeof indexLimit !== 'number' || indexLimit < 1, 'Index Limit should be a number greater than zero!', 'rangeError'],
+		[changeSpeed < 0, 'ChangeSpeed should be greater than zero!', 'rangeError']
 	)
 	const [isPlaying, setPlaying] = useState(false)
 	const [index, setIndex] = useState(0)

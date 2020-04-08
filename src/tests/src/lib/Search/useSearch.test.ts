@@ -75,7 +75,7 @@ describe('useSearch should', () => {
 
 		const { result } = renderHook(() => useSearch({data, search: '' }))
 
-		expect(result.error).toEqual(Error('Missing \'type\' option!'))
+		expect(result.error).toEqual(Error('Missing option \'type\'!'))
 	})
 	test('throws an error if type is not a key in searched object', () => {
 		const data = [{test: 'test1', id: 0}, {test: 'test2', id: 1}, {test: 'test3', id: 2}]
