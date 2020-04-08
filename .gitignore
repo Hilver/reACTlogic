@@ -3,5 +3,5 @@ coverage
 .eslintignore
 .npmignore
 _bundles
-lib
+/lib
 lib-esm
