@@ -2,12 +2,15 @@
   "name": "reactlogic-hooks-library",
   "version": "1.0.0",
   "description": "A React hooks based components logic library",
-  "main": "./dist/index.bundle.js",
+  "main": "./_bundles/index.bundle.js",
   "files": [
-    "./src/lib"
+    "lib",
+    "lib-esm",
+    "_bundles"
   ],
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && webpack",
+    "clean": "shx rm -rf _bundles lib lib-esm",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -45,6 +48,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "react-test-renderer": "^16.13.0",
+    "shx": "^0.3.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
