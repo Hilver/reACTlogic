@@ -26,9 +26,9 @@ const useSearch = (collections: ICollections): (string | number | inputData)[] =
 
 	if (data.some(val => typeof val === 'object')) {
 		errorValidator(
-			[!(data.every(val => typeof val === 'object')), 'Don\'t mix data object with others types!'],
-			[type === undefined, 'Missing \'type\' option!'],
-			[!(data.some(obj => Object.keys(obj).filter(key => key === type).length > 0)), 'Invalid \'type\' property. Type should match at least one of searched object key!']
+			[!(data.every(val => typeof val === 'object')), 'Don\'t mix data object with others types!', 'typeError'],
+			[type === undefined, 'Missing option \'type\'!', 'referenceError'],
+			[!(data.some(obj => Object.keys(obj).filter(key => key === type).length > 0)), 'Invalid \'type\' property. Type should match at least one of searched object key!', 'typeError']
 		)
 	}
 
