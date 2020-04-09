@@ -10,7 +10,8 @@ interface IData {
 	element?: {
 		current: HTMLElement;
 	};
-	throttleTime?: number;
+	debounce?: boolean;
+	delayTime?: number;
 }
 
 interface IScrollResult {
@@ -37,7 +38,7 @@ describe('useScroll should', () => {
 			element: {
 				current: container
 			},
-			throttleTime: 300
+			delayTime: 300
 		}))
 
 		expect(result.current).toMatchObject({
@@ -86,12 +87,12 @@ describe('useScroll should', () => {
 		expect(caseTd.result.error).toBeUndefined()
 		expect(caseTd.result).toBeDefined()
 	})
-	test('throw an error if throttleTime is less than zero', () => {
+	test('throw an error if delayTime is less than zero', () => {
 		const div = document.createElement('div')
 
-		const { result } = renderHook(() => useScroll({element: {current: div}, throttleTime: -25}))
+		const { result } = renderHook(() => useScroll({element: {current: div}, delayTime: -25}))
 
-		expect(result.error).toEqual(Error('ThrottleTime should be greater than zero!'))
+		expect(result.error).toEqual(Error('DelayTime should be greater than zero!'))
 	})
 	test('return expected values of passed element', () => {
 		// const { getByTestId } = render(

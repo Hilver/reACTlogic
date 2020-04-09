@@ -42,7 +42,7 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-### **useRect(refEl)**
+### **useRect(refEl?)**
 
 #### RefEl
 
@@ -63,7 +63,7 @@ rect.right: number
 rect.left: number
 ```
 
-### **useScroll({element, throttleTime, targetElement?})**
+### **useScroll({element?, debounce?, delayTime?, targetElement?})**
 
 #### element
 
@@ -71,11 +71,17 @@ Type: `RefObject<HTMLElement>`
 
 A React ref element of which scroll event will be measured.
 
-#### throttleTime
+#### debounce
+
+Type: `Boolean`
+
+If `true` then scroll event will use `debounce` function as delay, otherwise `throttle` function will be launched. If this option is ommited, `throttle` is set as default.
+
+#### delayTime
 
 Type: `number`
 
-A number of milliseconds of time between launches of each scroll event.
+A number of milliseconds for delay function. **Default value** is set to **0 ms**.
 
 #### **Usage**
 
