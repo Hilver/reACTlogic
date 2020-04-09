@@ -36,7 +36,7 @@ const App = (): ReactElement => {
 	const {width, height} = useRect(divRef)
 	const {x , y, isTop, isBottom, isTargetReached } = useScroll({
 		element: scrollRef,
-		throttleTime: 20,
+		delayTime: 20,
 		targetElement: targetToReach
 	})
 	const windowScrollPosition = useScroll()
