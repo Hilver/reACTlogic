@@ -8,7 +8,7 @@ reACTLogic is a library of React's components logic which is based on the modern
 
 Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app, I decided to write a core of basic logic which can be used by all React developers. This is a truly concept of **"create once, use everywhere"**!
 
-## Install
+## Installation
 
 ```
 npm install reactlogic
@@ -48,7 +48,7 @@ slider.index: number
 
 Type: `RefObject<HTMLElement>`
 
-A React ref element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. (More info here.)[https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect]
+A React ref element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. [More info here.](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 
 #### **Usage**
 
@@ -63,25 +63,29 @@ rect.right: number
 rect.left: number
 ```
 
-### **useScroll({element?, debounce?, delayTime?, targetElement?})**
+### useScroll({element?, debounce?, delayTime?, targetElement?})
 
 #### element
 
-Type: `RefObject<HTMLElement>`
+**Type: `RefObject<HTMLElement>`**
+
+**Default: `window`**
 
 A React ref element of which scroll event will be measured.
 
 #### debounce
 
-Type: `Boolean`
+**Type: `Boolean`**
 
-If `true` then scroll event will use `debounce` function as delay, otherwise `throttle` function will be launched. If this option is ommited, `throttle` is set as default.
+If `true` then scroll event will use `debounce` function as delay, otherwise `throttle` function will be set. If this option is ommited, `throttle` is set as default.
 
 #### delayTime
 
-Type: `number`
+**Type: `number`**
 
-A number of milliseconds for delay function. **Default value** is set to **0 ms**.
+**Default: `0 ms`**
+
+A number of milliseconds for delay function.
 
 #### **Usage**
 
