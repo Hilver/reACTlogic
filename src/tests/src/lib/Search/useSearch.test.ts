@@ -9,6 +9,12 @@ describe('useSearch should', () => {
 
 		expect(result.current).toStrictEqual(testArr)
 	})
+	test('returns default values as provided when init search is null', () => {
+		const testArr = ['test1', 'test2', 'test3']
+		const { result } = renderHook(() => useSearch({data: testArr, search: null}))
+
+		expect(result.current).toStrictEqual(testArr)
+	})
 
 	test('returns result from string\'s array based on a given search', () => {
 		const testArr = ['test1', 'test2', 'test3']
