@@ -6,7 +6,6 @@ type inputData = {
     [key: string]: string | number;
 }
 
-
 export interface ICollections {
 	data: Array<string | number | inputData>;
 	search: string | number;
@@ -35,9 +34,9 @@ const useSearch = (collections: ICollections): (string | number | inputData)[] =
 	useEffect(() => {
 		if (data.length) {
 			if (type) {
-				setResult(data.filter((el: inputData) => toStr(el[type], caseSensitive).indexOf(toStr(search, caseSensitive)) !== -1))
+				setResult(data.filter((el: inputData) => toStr(el[type], caseSensitive).indexOf(toStr(search || '', caseSensitive)) !== -1))
 			} else if (typeof data[0] !== 'object') {
-				setResult(data.filter((el: string | number) => toStr(el, caseSensitive).indexOf(toStr(search, caseSensitive)) !== -1))
+				setResult(data.filter((el: string | number) => toStr(el, caseSensitive).indexOf(toStr(search || '', caseSensitive)) !== -1))
 			}
 		}
 	}, [search, type, data, caseSensitive])
