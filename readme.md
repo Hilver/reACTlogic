@@ -105,12 +105,27 @@ scroll.isTargetReached: boolean
 
 ### **useInput**
 
+Returns provided value as string.
+
 #### **Usage**
 ```
 const input = useInput()
 
 input[0]: string
 input[1]: function: e => setValue(e.target.value)
+}
+```
+
+### **useCheckbox**
+
+Returns boolean value from `checkbox` input.
+
+#### **Usage**
+```
+const input = useInput()
+
+input[0]: string
+input[1]: function: e => setValue(e.target.checked)
 }
 ```
 

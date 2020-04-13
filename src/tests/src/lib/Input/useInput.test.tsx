@@ -82,28 +82,4 @@ describe('useInput should', () => {
 
 		expect(testingDiv.innerHTML).toBe('test2')
 	})
-	test('returns provided value on checkbox input type', () => {
-		const CheckboxInputComponent = (): React.ReactElement => {
-			const [value, setValue] = useInput({isCheckbox: true})
-			return (
-				<div>
-					<input data-testid='checkboxInput' type='checkbox' onChange={setValue} />
-					<div data-testid='testedDiv'>{value === true ? 'checked' : 'not checked'}</div>
-				</div>
-			)
-		}
-
-		const { getByTestId } = render(
-			<CheckboxInputComponent />
-		)
-
-		const checkbox = getByTestId('checkboxInput')
-		const testingDiv = getByTestId('testedDiv')
-
-		expect(testingDiv.innerHTML).toBe('not checked')
-
-		fireEvent.click(checkbox)
-
-		expect(testingDiv.innerHTML).toBe('checked')
-	})
 })
