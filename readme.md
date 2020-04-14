@@ -31,6 +31,8 @@ npm install reactlogic-hooks-library
 
 ## API
 
+This documentation with additional code snippets is also available [here](https://hilver.github.io/reactlogic-docs/)
+
 ### useCheckbox
 
 Returns boolean value from `checkbox` input.
