@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-	<img src="./media/reACTlogic_logo.png" />
+	<img src="https://github.com/Hilver/reACTlogic/raw/master/media/reACTlogic_logo.png" />
 </div>
 
 ![](https://badgen.net/github/last-commit/Hilver/reACTlogic) ![](https://badgen.net/npm/v/reactlogic-hooks-library) ![](https://badgen.net/github/license/Hilver/reACTlogic)
