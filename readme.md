@@ -31,6 +31,110 @@ npm install reactlogic-hooks-library
 
 ## API
 
+### useCheckbox
+
+Returns boolean value from `checkbox` input.
+
+#### **Usage**
+```
+const input = useCheckbox()
+
+input[0]: boolean
+input[1]: function: e => setValue(e.target.checked)
+}
+```
+
+### useInput
+
+Returns provided value as string.
+
+#### **Usage**
+```
+const input = useInput()
+
+input[0]: string
+input[1]: function: e => setValue(e.target.value)
+}
+```
+
+### useScroll({element?, debounce?, delayTime?, targetElement?})
+
+#### element
+
+**Type: `RefObject<HTMLElement>`**
+
+**Default: `window`**
+
+A React ref element of which scroll event will be measured.
+
+#### debounce
+
+**Type: `Boolean`**
+
+If `true` then scroll event will use `debounce` function as delay, otherwise `throttle` function will be set. If this option is ommited, `throttle` is set as default.
+
+#### delayTime
+
+**Type: `number`**
+
+**Default: `0 ms`**
+
+A number of milliseconds for delay function.
+
+#### **Usage**
+
+```
+const scroll = useScroll({
+	element?: ReactRefElement, 
+	throttleTime?: number(ms),
+	targetElement?: ReactRefElement
+})
+
+scroll.x: number
+scroll.y: number
+scroll.isTop: boolean
+scroll.isBottom: boolean
+scroll.isTargetReached: boolean
+```
+
+### useSearch({data, search, type?, caseSensitive?})
+
+#### data
+
+**Type: `Array<string | number | object>`**
+
+An `array` of data that will be filtered for a match.
+
+#### search
+
+**Type: `string | number`**
+
+A `string` or `number` to be searched for.
+
+#### type
+
+**Type: `string<keyof data>`**
+
+When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data objects.
+
+#### caseSensitive
+
+Type: `boolean`
+
+An addition property which distinguish queries by case sensitive. Default value is set to **true**.
+
+#### **Usage**
+
+```
+const search = useSearch({
+	data: array, 
+	search: string,
+	type: string
+})
+
+search.value: array
+```
+
 ### useSlider(indexLimit, changeSpeed?)
 
 #### indexLimit
@@ -80,110 +184,6 @@ rec.top: number
 rect.bottom: number
 rect.right: number
 rect.left: number
-```
-
-### useScroll({element?, debounce?, delayTime?, targetElement?})
-
-#### element
-
-**Type: `RefObject<HTMLElement>`**
-
-**Default: `window`**
-
-A React ref element of which scroll event will be measured.
-
-#### debounce
-
-**Type: `Boolean`**
-
-If `true` then scroll event will use `debounce` function as delay, otherwise `throttle` function will be set. If this option is ommited, `throttle` is set as default.
-
-#### delayTime
-
-**Type: `number`**
-
-**Default: `0 ms`**
-
-A number of milliseconds for delay function.
-
-#### **Usage**
-
-```
-const scroll = useScroll({
-	element?: ReactRefElement, 
-	throttleTime?: number(ms),
-	targetElement?: ReactRefElement
-})
-
-scroll.x: number
-scroll.y: number
-scroll.isTop: boolean
-scroll.isBottom: boolean
-scroll.isTargetReached: boolean
-```
-
-### useInput
-
-Returns provided value as string.
-
-#### **Usage**
-```
-const input = useInput()
-
-input[0]: string
-input[1]: function: e => setValue(e.target.value)
-}
-```
-
-### useCheckbox
-
-Returns boolean value from `checkbox` input.
-
-#### **Usage**
-```
-const input = useCheckbox()
-
-input[0]: boolean
-input[1]: function: e => setValue(e.target.checked)
-}
-```
-
-### useSearch({data, search, type?, caseSensitive?})
-
-#### data
-
-**Type: `Array<string | number | object>`**
-
-An `array` of data that will be filtered for a match.
-
-#### search
-
-**Type: `string | number`**
-
-A `string` or `number` to be searched for.
-
-#### type
-
-**Type: `string<keyof data>`**
-
-When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data objects.
-
-#### caseSensitive
-
-Type: `boolean`
-
-An addition property which distinguish queries by case sensitive. Default value is set to **true**.
-
-#### **Usage**
-
-```
-const search = useSearch({
-	data: array, 
-	search: string,
-	type: string
-})
-
-search.value: array
 ```
 
 ## Contributors
