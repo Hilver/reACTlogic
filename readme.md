@@ -10,13 +10,14 @@ reACTLogic is a library of React's components logic which is based on the modern
 
 1. [Motivation](#motivation)
 2. [Installation](#installation)
-3. [API][#api]
+3. [API](#api)
 	- [useCheckbox](#usecheckbox)
 	- [useInput](#useinput)
 	- [useRect](#userectrefel)
 	- [useScroll](#usescrollelement-debounce-delaytime-targetelement)
 	- [useSearch](#usesearchdata-search-type-casesensitive)
 	- [useSlider](#usesliderindexlimit-changespeed)
+4. [Contributor list](#contributors)
 
 ## Motivation
 
@@ -184,3 +185,19 @@ const search = useSearch({
 
 search.value: array
 ```
+
+## Contributors
+<!-- CONTRIBUTORS LIST -->
+<table cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td align="center">
+				<a href="https://github.com/Hilver">
+					<img src="https://avatars3.githubusercontent.com/u/12917005?v=3" width="100px;" alt=""/>
+					<br />
+					<sub><b>Paweł Pęczkowski</b></sub>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
