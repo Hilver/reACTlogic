@@ -2,33 +2,49 @@
 	<img src="./media/reACTlogic_logo.png" />
 </div>
 
+![](https://badgen.net/github/last-commit/Hilver/reACTlogic) ![](https://badgen.net/npm/v/reactlogic-hooks-library) ![](https://badgen.net/github/license/Hilver/reACTlogic)
+
 reACTLogic is a library of React's components logic which is based on the modern and cool React approach - **hooks!**
+
+## Table of contents
+
+1. [Motivation](#motivation)
+2. [Installation](#installation)
+3. [API][#api]
+	- [useCheckbox](#usecheckbox)
+	- [useInput](#useinput)
+	- [useRect](#userectrefel)
+	- [useScroll](#usescrollelement-debounce-delaytime-targetelement)
+	- [useSearch](#usesearchdata-search-type-casesensitive)
+	- [useSlider](#usesliderindexlimit-changespeed)
 
 ## Motivation
 
-Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app, I decided to write a core of basic logic which can be used by all React developers. This is a truly concept of **"create once, use everywhere"**!
+Since React Hooks brings us an easy and maintainlable way to share and reuse component's logic between the entirely app it became clear that custom hooks are the future of React. This library is a truly concept of **"create once, use everywhere"**!
 
 ## Installation
 
 ```
-npm install reactlogic
+npm install reactlogic-hooks-library
 ```
 
 ## API
 
-### **useSlider(indexLimit, changeSpeed?)**
+### useSlider(indexLimit, changeSpeed?)
 
 #### indexLimit
 
-Type: `number`
+**Type: `number`**
 
 A number of slider length.
 
 #### changeSpeed
 
-Type: `number`
+**Type: `number`**
 
-A number of miliseconds between each slide change. Default value is set to `2000ms`
+**Default: `2000 ms`**
+
+A number of miliseconds between each slide change.
 
 #### **Usage**
 ```
@@ -42,11 +58,13 @@ slider.prevSlide: function: () => index - 1
 slider.index: number
 ```
 
-### **useRect(refEl?)**
+### useRect(refEl?)
 
 #### RefEl
 
-Type: `RefObject<HTMLElement>`
+**Type: `RefObject<HTMLElement>`**
+
+**Default: `window`**
 
 A React ref element of which rect is counted. Properties describing the overall border-box in pixels. Properties other than `width` and `height` are relative to the top-left o the viewport. [More info here.](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 
@@ -103,7 +121,7 @@ scroll.isBottom: boolean
 scroll.isTargetReached: boolean
 ```
 
-### **useInput**
+### useInput
 
 Returns provided value as string.
 
@@ -116,36 +134,36 @@ input[1]: function: e => setValue(e.target.value)
 }
 ```
 
-### **useCheckbox**
+### useCheckbox
 
 Returns boolean value from `checkbox` input.
 
 #### **Usage**
 ```
-const input = useInput()
+const input = useCheckbox()
 
-input[0]: string
+input[0]: boolean
 input[1]: function: e => setValue(e.target.checked)
 }
 ```
 
-### **useSearch({data, search, type?, caseSensitive?})**
+### useSearch({data, search, type?, caseSensitive?})
 
 #### data
 
-Type: `Array<string | number | object>`
+**Type: `Array<string | number | object>`**
 
 An `array` of data that will be filtered for a match.
 
 #### search
 
-Type: `string | number`
+**Type: `string | number`**
 
 A `string` or `number` to be searched for.
 
 #### type
 
-Type: `string<keyof data>`
+**Type: `string<keyof data>`**
 
 When input data is an `array` of `objects`, you have to specify which property include to search for. It should be `string` which is key of specified data objects.
 
