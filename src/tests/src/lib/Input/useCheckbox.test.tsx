@@ -3,7 +3,7 @@ import { render, fireEvent} from '@testing-library/react'
 import useCheckbox from '../../../../lib/Input/useCheckbox'
 
 describe('useCheckbox should', () => {
-	test('returns true if checkbox is checked', () => {
+	test('returns true if checked and false otherwise', () => {
 		const CheckboxInputComponent = (): React.ReactElement => {
 			const [value, setValue] = useCheckbox()
 			return (

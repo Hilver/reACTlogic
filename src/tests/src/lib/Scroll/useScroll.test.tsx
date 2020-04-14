@@ -1,4 +1,4 @@
-import React, {useRef, ReactElement} from 'react'
+import React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { renderHook } from '@testing-library/react-hooks'
 import { render, fireEvent } from '@testing-library/react'
@@ -62,6 +62,7 @@ describe('useScroll should', () => {
 			isTop: false
 		})
 	})
+	test.todo('return expected values when scrolled on passed element')
 	test('throw an error if element is not a div, table or td', () => {
 		const span = document.createElement('span')
 
@@ -93,30 +94,6 @@ describe('useScroll should', () => {
 		const { result } = renderHook(() => useScroll({element: {current: div}, delayTime: -25}))
 
 		expect(result.error).toEqual(Error('DelayTime should be greater than zero!'))
-	})
-	test('return expected values of passed element', () => {
-		// const { getByTestId } = render(
-		// 	<App/>
-		// )
-
-		// const scrollDiv = getByTestId("scrollDiv")
-
-		// const { result } = r({
-		// 	element: {
-		// 		current: scrollDiv
-		// 	}
-		// })
-
-		// act(() => {
-		// 	fireEvent.scroll(scrollDiv, { currentTarget: {scrollLeft: 0, scrollTop: 0}})
-		// })
-
-		// expect(result.current).toMatchObject({
-		// 	x: 0,
-		// 	y: 230,
-		// 	isBottom: false,
-		// 	isTop: false
-		// })
 	})
 })
 
