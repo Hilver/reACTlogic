@@ -1,11 +1,8 @@
 <div style="text-align: center;">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 	<img src="https://github.com/Hilver/reACTlogic/raw/master/media/reACTlogic_logo.png" />
 </div>
 
-![](https://badgen.net/github/last-commit/Hilver/reACTlogic) ![](https://badgen.net/npm/v/reactlogic-hooks-library) ![](https://badgen.net/github/license/Hilver/reACTlogic)
+![](https://badgen.net/github/last-commit/Hilver/reACTlogic) ![](https://badgen.net/npm/v/reactlogic-hooks-library) ![](https://badgen.net/github/license/Hilver/reACTlogic) [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
 reACTLogic is a library of React's components logic which is based on the modern and cool React approach - **hooks!**
 
