@@ -1,4 +1,7 @@
 <div style="text-align: center;">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 	<img src="https://github.com/Hilver/reACTlogic/raw/master/media/reACTlogic_logo.png" />
 </div>
 
@@ -191,6 +194,18 @@ rect.left: number
 ## Contributors
 <!-- CONTRIBUTORS LIST -->
 <table cellspacing="0" cellpadding="0">
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Hilver"><img src="https://avatars2.githubusercontent.com/u/12917005?v=4" width="100px;" alt=""/><br /><sub><b>Paweł Pęczkowski</b></sub></a><br /><a href="#infra-Hilver" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/Hilver/reACTlogic/commits?author=Hilver" title="Tests">⚠️</a> <a href="https://github.com/Hilver/reACTlogic/commits?author=Hilver" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 	<tbody>
 		<tr>
 			<td align="center">
