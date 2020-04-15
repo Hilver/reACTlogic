@@ -192,8 +192,6 @@ rect.left: number
 ```
 
 ## Contributors
-<!-- CONTRIBUTORS LIST -->
-<table cellspacing="0" cellpadding="0">
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -206,15 +204,3 @@ rect.left: number
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-	<tbody>
-		<tr>
-			<td align="center">
-				<a href="https://github.com/Hilver">
-					<img src="https://avatars3.githubusercontent.com/u/12917005?v=3" width="100px;" alt=""/>
-					<br />
-					<sub><b>Paweł Pęczkowski</b></sub>
-				</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
